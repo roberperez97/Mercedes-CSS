@@ -378,16 +378,20 @@ span.violet{
 
 .items{
   display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
+  align-items: center;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory; /*para que se "pegue" a cada elemento*/
   width: 100%;
-  padding: 20px;
-  gap: 15px;
+  max-width: 310px;
+  gap: 10px;
+  margin: 0 auto;
   .item{
     background-color: var(--grey-car);
     display: flex;
+    scroll-snap-align: start; /*cada article cuando se "scrollea se alinea al incio"*/
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 310px;
     height: 334px;
     border-radius: 8px;
@@ -420,9 +424,17 @@ span.violet{
     }
   }
 }
+
+.items::-webkit-scrollbar {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .items{
     gap: 60px;
+    max-width: 2160px;
+    margin: 0 60px;
+    padding-right: 60px;
     .item{
       align-items: start;
       width: 540px;
@@ -434,6 +446,11 @@ span.violet{
         height: 270px;
       }
     }
+  }
+  .items::after {
+    content: '';
+    flex: 0 0 60px; /* Espacio invisible al final */
+    height: 1px;
   }
 }
 
