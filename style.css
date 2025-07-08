@@ -137,7 +137,6 @@ header{
 
 @media (min-width: 768px){
   .cars{
-    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(660px, 670px));
     grid-template-rows: auto auto;
     justify-content: center;
@@ -380,7 +379,7 @@ span.violet{
   display: flex;
   align-items: center;
   overflow-x: scroll;
-  scroll-snap-type: x mandatory; /*para que se "pegue" a cada elemento*/
+  /* scroll-snap-type: x mandatory; para que se "pegue" a cada elemento */
   width: 100%;
   max-width: 310px;
   gap: 10px;
@@ -425,9 +424,9 @@ span.violet{
   }
 }
 
-.items::-webkit-scrollbar {
+/* .items::-webkit-scrollbar {
   display: none;
-}
+} */
 
 @media (min-width: 768px) {
   .items{
@@ -680,12 +679,14 @@ footer{
         height: 51px;
         width: max-content;
         color: rgba(255, 255, 255, 1);
-        outline: none;
       }
       input::placeholder{
         color: rgba(255, 255, 255, 1);
         width: max-content;
         text-align: center;
+      }
+      input:focus-visible{
+        outline: none;
       }
       button{
         border-radius: 80px;
@@ -699,6 +700,9 @@ footer{
       button:hover{
         background-color: rgb(196, 196, 196);
       }
+    }
+    div.form-email:has(input:focus-visible){
+      border: 3px solid white;
     }
     div.form-policy{
       gap: 10px;
